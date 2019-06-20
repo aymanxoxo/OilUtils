@@ -3,3 +3,4 @@ Interfaces/obj/
 */packages/
 *.user
 */.vs
+*/bin
