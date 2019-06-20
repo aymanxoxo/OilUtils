@@ -1,3 +1,5 @@
+OilUtils/obj/
+Interfaces/obj/
+OilUtils/.vs/
+OilUtils/packages/
 *.user
-*.ide-shm
-*.ide-wal
