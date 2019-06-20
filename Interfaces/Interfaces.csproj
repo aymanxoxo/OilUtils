@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IServices\DrawerService.cs" />
     <Compile Include="IServices\ILayerReaderService.cs" />
     <Compile Include="IServices\IMeshCalculatorService.cs" />
+    <Compile Include="IServices\IThreeDimensionsMesh.cs" />
+    <Compile Include="IServices\ITwoDimensionsMesh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
