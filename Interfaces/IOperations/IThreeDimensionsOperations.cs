@@ -1,4 +1,4 @@
-﻿namespace Interfaces.IServices
+﻿namespace Interfaces.IOperations
 {
     public interface IThreeDimensionsOperations
     {

@@ -41,11 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IServices\IGeometryService.cs" />
     <Compile Include="IServices\ILayerReaderService.cs" />
-    <Compile Include="IServices\IMeshCalculatorService.cs" />
-    <Compile Include="IServices\IThreeDimensionsOperations.cs" />
-    <Compile Include="IServices\ITwoDimensionsOperations.cs" />
+    <Compile Include="IOperations\IMeshCalculatorOperations.cs" />
+    <Compile Include="IOperations\IThreeDimensionsOperations.cs" />
+    <Compile Include="IServices\IThreeDimensionsMeshService.cs" />
+    <Compile Include="IServices\ITwoDimensionsMeshService.cs" />
+    <Compile Include="IOperations\ITwoDimensionsOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,6 @@
-﻿namespace Interfaces.IServices
+﻿namespace Interfaces.IOperations
 {
-    public interface IMeshCalculatorService
+    public interface IMeshCalculatorOperations
     {
         string CalculatePositions();
 
