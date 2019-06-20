@@ -1,0 +1,15 @@
+C:\Workspace\Private\OilUtils\OilUtils\bin\Debug\OilUtils.exe.config
+C:\Workspace\Private\OilUtils\OilUtils\bin\Debug\OilUtils.exe
+C:\Workspace\Private\OilUtils\OilUtils\bin\Debug\OilUtils.pdb
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils.csprojAssemblyReference.cache
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\MainWindow.g.cs
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\App.g.cs
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils_MarkupCompile.cache
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils_MarkupCompile.lref
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\MainWindow.baml
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils.g.resources
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils.Properties.Resources.resources
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils.csproj.GenerateResource.cache
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils.csproj.CoreCompileInputs.cache
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils.exe
+C:\Workspace\Private\OilUtils\OilUtils\obj\Debug\OilUtils.pdb
