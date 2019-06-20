@@ -47,5 +47,31 @@ namespace Services.Tests
             // assert
             Assert.AreEqual(new int[] { 0, 1, 3, 3, 2, 0 }, result);
         }
+
+        [Test]
+        public void CalculatePositions_TwoSquarePoints_ReturnFourPoints()
+        {
+            // arrange
+            service = new TwoDimensionsMeshService(new double[] { 0, 1, 2 }, new double[] { 0, 1 });
+
+            // act
+            var result = service.CalculatePositions();
+
+            // assert
+            Assert.AreEqual(" 0,0,0 1,0,0 2,0,0 0,1,0 1,1,0 2,1,0", result);
+        }
+
+        [Test]
+        public void CalculateTriangleIndices_TwoSquarePoints_ReturnTwoFacesIndices()
+        {
+            // arrange
+            service = new TwoDimensionsMeshService(new double[] { 0, 1, 2 }, new double[] { 0, 1 });
+
+            // act
+            var result = service.CalculateTriangleIndices();
+
+            // assert
+            Assert.AreEqual(new int[] { 0, 1, 4, 4, 3, 0, 1, 2, 5, 5, 4, 1 }, result);
+        }
     }
 }
