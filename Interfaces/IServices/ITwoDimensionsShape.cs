@@ -1,6 +1,6 @@
 ﻿namespace Interfaces.IServices
 {
-    public interface ITwoDimensionsMesh
+    public interface ITwoDimensionsShape
     {
     }
 }

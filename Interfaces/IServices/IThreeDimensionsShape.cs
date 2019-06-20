@@ -1,6 +1,6 @@
 ﻿namespace Interfaces.IServices
 {
-    public interface IThreeDimensionsMesh
+    public interface IThreeDimensionsShape
     {
         double Volume();
     }
