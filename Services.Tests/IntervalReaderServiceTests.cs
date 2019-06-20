@@ -12,7 +12,7 @@ namespace Services.Tests
         public void ReadPoints_ZeroInterval()
         {
             // arrange
-            int pointsCount = 0;
+            int pointsCount = 5;
             double startPoint = 0;
             service = new IntervalReaderService(0, pointsCount, startPoint);
 
@@ -53,11 +53,11 @@ namespace Services.Tests
         [Test]
         [TestCase(0, 0, 0, TestName = "Zero number of points")]
         [TestCase(0, -1, 0, TestName = "negative number of points")]
-        public void ReadPoints_ZeroOrLessNumberOfPoints_ThrowsArgumentException()
+        public void ReadPoints_ZeroOrLessNumberOfPoints_ThrowsArgumentException(double interval, int pointsCount, double startPoint)
         {
             // arrange
             Exception exception = null;
-            service = new IntervalReaderService(0, 0, 0);
+            service = new IntervalReaderService(interval, pointsCount, startPoint);
 
             // act
             try

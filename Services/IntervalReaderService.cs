@@ -1,4 +1,5 @@
 ﻿using Interfaces.IServices;
+using System;
 
 namespace Services
 {
@@ -17,7 +18,19 @@ namespace Services
 
         public double[] ReadPoints()
         {
-            throw new System.NotImplementedException();
+            if (_pointsCount <= 0)
+            {
+                throw new ArgumentException("Points count must be greater than zero");
+            }
+
+            var result = new double[_pointsCount];
+
+            for(var i = 0; i < _pointsCount; i++)
+            {
+                result[i] = _startPoint + (i * _interval);
+            }
+
+            return result;
         }
     }
 }

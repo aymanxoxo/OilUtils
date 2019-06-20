@@ -20,6 +20,28 @@ namespace Services.Tests
 
             // assert
             Assert.AreEqual(dependentPoints.Length, result.Length);
+            for(var i = 0; i < dependentPoints.Length; i++)
+            {
+                Assert.AreEqual(result[i], 5);
+            }
+        }
+
+        [Test]
+        public void ReadPoints_SomeDependentNegativePointsAndDiffValues_ReturnSameLengthOfDependentPointsWithNewValues()
+        {
+            // arrange
+            var dependentPoints = new double[] { 1, 2, 3, 4 };
+            service = new RelativePointsReaderService(dependentPoints, "-1, -2, -3, -4");
+
+            // act
+            var result = service.ReadPoints();
+
+            // assert
+            Assert.AreEqual(dependentPoints.Length, result.Length);
+            for (var i = 0; i < dependentPoints.Length; i++)
+            {
+                Assert.AreEqual(result[i], 0);
+            }
         }
 
         // should be separated when create new custom exceptions for each case individually
