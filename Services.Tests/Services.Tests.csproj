@@ -50,6 +50,8 @@
     <Compile Include="IntervalReaderServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelativePointsReaderServiceTests.cs" />
+    <Compile Include="ThreeDimensionsMeshServiceTests.cs" />
+    <Compile Include="TwoDimensionsMeshServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
