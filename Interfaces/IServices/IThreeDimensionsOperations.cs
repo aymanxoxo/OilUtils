@@ -1,6 +1,6 @@
 ﻿namespace Interfaces.IServices
 {
-    public interface IThreeDimensionsShape
+    public interface IThreeDimensionsOperations
     {
         double Volume();
     }
