@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OilUtils", "OilUtils.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "..\Interfaces\Interfaces.csproj", "{C12BE432-2309-4B08-9156-E47FAF9ACD21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "..\Services\Services.csproj", "{AB6891FE-57CC-4680-B3FB-B4D43607D679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Tests", "..\Services.Tests\Services.Tests.csproj", "{4C02CE64-2FB7-4C91-96E1-BCF1BD909D4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C12BE432-2309-4B08-9156-E47FAF9ACD21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C12BE432-2309-4B08-9156-E47FAF9ACD21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C12BE432-2309-4B08-9156-E47FAF9ACD21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB6891FE-57CC-4680-B3FB-B4D43607D679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB6891FE-57CC-4680-B3FB-B4D43607D679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB6891FE-57CC-4680-B3FB-B4D43607D679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB6891FE-57CC-4680-B3FB-B4D43607D679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C02CE64-2FB7-4C91-96E1-BCF1BD909D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C02CE64-2FB7-4C91-96E1-BCF1BD909D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C02CE64-2FB7-4C91-96E1-BCF1BD909D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C02CE64-2FB7-4C91-96E1-BCF1BD909D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
