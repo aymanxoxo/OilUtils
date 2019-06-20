@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IServices\DrawerService.cs" />
+    <Compile Include="IServices\IGeometryService.cs" />
     <Compile Include="IServices\ILayerReaderService.cs" />
     <Compile Include="IServices\IMeshCalculatorService.cs" />
     <Compile Include="IServices\IThreeDimensionsOperations.cs" />
