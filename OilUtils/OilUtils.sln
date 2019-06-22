@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Tests", "..\Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{C75D2069-9052-425C-9495-04503DB67BDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayeringControlLibrary", "..\LayeringControlLibrary\LayeringControlLibrary.csproj", "{0A42A1E3-C885-45C2-A85C-CF7F6EE35841}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C75D2069-9052-425C-9495-04503DB67BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C75D2069-9052-425C-9495-04503DB67BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C75D2069-9052-425C-9495-04503DB67BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A42A1E3-C885-45C2-A85C-CF7F6EE35841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A42A1E3-C885-45C2-A85C-CF7F6EE35841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A42A1E3-C885-45C2-A85C-CF7F6EE35841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A42A1E3-C885-45C2-A85C-CF7F6EE35841}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

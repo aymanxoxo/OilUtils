@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Unity;
 using System.Windows;
 
 namespace OilUtils
@@ -11,7 +8,20 @@ namespace OilUtils
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
+        protected override Window CreateShell()
+        {
+            return new MainWindow();
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+        }
+
+        protected override IModuleCatalog CreateModuleCatalog()
+        {
+            return new ConfigurationModuleCatalog();
+        }
     }
 }
