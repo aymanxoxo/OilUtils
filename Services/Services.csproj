@@ -66,6 +66,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\IntervalReaderServiceFactory.cs" />
+    <Compile Include="Factories\RelativePointsReaderServiceFactory.cs" />
     <Compile Include="IntervalReaderService.cs" />
     <Compile Include="ServicesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +83,10 @@
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{c12be432-2309-4b08-9156-e47faf9acd21}</Project>
       <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{0AF0A790-C0DB-4CF9-A19A-EA07643664B7}</Project>
+      <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

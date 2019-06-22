@@ -1,6 +1,8 @@
-﻿using Infrastructure.StringConstants;
+﻿using Interfaces.IFactories;
 using Interfaces.IServices;
+using Models;
 using Prism.Ioc;
+using Services.Factories;
 using Unity;
 
 namespace Services
@@ -22,8 +24,8 @@ namespace Services
         {
             _container.RegisterType<ITwoDimensionsMeshService, TwoDimensionsMeshService>();
             _container.RegisterType<IThreeDimensionsMeshService, ThreeDimensionsMeshService>();
-            _container.RegisterType<ILayerReaderService, IntervalReaderService>(UnityServiceNames.IntervalReaderService);
-            _container.RegisterType<ILayerReaderService, RelativePointsReaderService>(UnityServiceNames.RelativePointsReaderService);
+            _container.RegisterType<IReaderFactory<RelativePointsReaderSettings>, RelativePointsReaderServiceFactory>();
+            _container.RegisterType<IReaderFactory<IntervalReaderSettings>, IntervalReaderServiceFactory>();
         }
     }
 }
