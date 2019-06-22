@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseViewModel.cs" />
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\CommandWithoutParameters.cs" />
     <Compile Include="Command\ConditionalCommand.cs" />
