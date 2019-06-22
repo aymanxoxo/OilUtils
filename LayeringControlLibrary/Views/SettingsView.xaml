@@ -3,17 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:LayeringControlLibrary"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Margin="5 40">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0">
-            <TextBlock DockPanel.Dock="Left" Text="Upper Bid" Style="{StaticResource H3}"/>
-            <Button DockPanel.Dock="Right" Content="Add"/>
-        </DockPanel>
+        <TextBlock Grid.Row="0" Text="Upper Bid" Style="{StaticResource H3}"/>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding UpperLayers}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" Foreground="{Binding Color}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <TextBlock Grid.Row="2" Text="Lower Bid" Style="{StaticResource H3}"/>
+
+        <ItemsControl Grid.Row="3" ItemsSource="{Binding LowerLayers}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" Foreground="{Binding Color}" Style="{StaticResource Bold}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Button Grid.Row="4" Content="Draw Oil Body" Width="100" Command="{Binding DrawCommand}"/>
     </Grid>
 </UserControl>

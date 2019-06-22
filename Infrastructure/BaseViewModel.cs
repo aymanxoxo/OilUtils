@@ -6,9 +6,9 @@ namespace Infrastructure
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaisePropertyChanged(string propertyName)
+        protected void OnPropertyChanged(string propertyName)
         {
-            if (!string.IsNullOrEmpty(propertyName))
+            if (!string.IsNullOrEmpty(propertyName) && PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }

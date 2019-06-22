@@ -1,68 +1,111 @@
 ﻿using Interfaces.IServices;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Services
 {
     public class TwoDimensionsMeshService : ITwoDimensionsMeshService
     {
-        private readonly double[] _xs;
-        private readonly double[] _ys;
-        private double _depth;
+        private string _positions;
 
-        public TwoDimensionsMeshService(double[] xs, double[] ys, double depth = 0)
+        private List<int> _trianglesIndices;
+
+        public double[] Xs { get; set; }
+
+        public double[] Ys { get; set; }
+
+        public double[] Depths { get; set; }
+
+        public TwoDimensionsMeshService()
         {
-            _xs = xs;
-            _ys = ys;
-            _depth = depth;
+            Reset();
         }
 
         public string CalculatePositions()
         {
-            var result = string.Empty;
-
-            for (var y = 0; y < _ys.Length; y++)
+            if (!CanDraw())
             {
-                for (var x = 0; x < _xs.Length; x++)
+                throw new ArgumentException();
+            }
+
+            if (!string.IsNullOrEmpty(_positions))
+            {
+                return _positions;
+            }
+
+            _positions = string.Empty;
+
+            if (Depths == null || !Depths.Any())
+            {
+                var tempDepts = new List<double>();
+                for(var i = 0; i < Xs.Length * Ys.Length; i++)
                 {
-                    result += $" {_xs[x]},{_ys[y]},{_depth}";
+                    tempDepts.Add(0);
+                }
+
+                Depths = tempDepts.ToArray();
+            }
+
+            for (var y = 0; y < Ys.Length; y++)
+            {
+                for (var x = 0; x < Xs.Length; x++)
+                {
+                    var flatIndex = (y * Xs.Length) + x;
+
+                    _positions += $" {Xs[x]},{Ys[y]},{Depths[flatIndex]}";
                 }
             }
 
-            return result;
+            return _positions.Trim();
         }
 
         public int[] CalculateTriangleIndices()
         {
-            var result = new List<int>();
-
-            for (var y = 0; y < _ys.Length - 1; y++)
+            if (!CanDraw())
             {
-                var start = y * _xs.Length;
-                var end = start + _xs.Length;
+                throw new ArgumentException();
+            }
+
+            if (_trianglesIndices?.Count > 0)
+            {
+                return _trianglesIndices.ToArray();
+            }
+
+            for (var y = 0; y < Ys.Length - 1; y++)
+            {
+                var start = y * Xs.Length;
+                var end = start + Xs.Length;
 
                 for (var i = start; i < end - 1; i++)
                 {
 
                     var v1 = i;
                     var v2 = i + 1;
-                    var v3 = _xs.Length + i;
-                    var v4 = _xs.Length + i + 1;
+                    var v3 = Xs.Length + i;
+                    var v4 = Xs.Length + i + 1;
 
-                    result.Add(v1);
-                    result.Add(v2);
-                    result.Add(v4);
-                    result.Add(v4);
-                    result.Add(v3);
-                    result.Add(v1);
+                    _trianglesIndices.Add(v1);
+                    _trianglesIndices.Add(v2);
+                    _trianglesIndices.Add(v4);
+                    _trianglesIndices.Add(v4);
+                    _trianglesIndices.Add(v3);
+                    _trianglesIndices.Add(v1);
                 }
             }
 
-            return result.ToArray();
+            return _trianglesIndices.ToArray();
         }
 
         public bool CanDraw()
         {
-            return _xs?.Length > 0 && _ys?.Length > 0 && (_xs.Length + _ys.Length) > 2;
+            return Xs?.Length > 0 && Ys?.Length > 0 && (Xs.Length + Ys.Length) > 2;
+        }
+
+        public void Reset()
+        {
+            _positions = string.Empty;
+            _trianglesIndices = new List<int>();
         }
     }
 }

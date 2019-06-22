@@ -1,4 +1,4 @@
-﻿using Interfaces.IContracts;
+﻿using Models.IContracts;
 
 namespace Models
 {

@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,14 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BodyModel.cs" />
+    <Compile Include="FileReaderSettings.cs" />
+    <Compile Include="IContracts\IReaderSettings.cs" />
     <Compile Include="IntervalReaderSettings.cs" />
+    <Compile Include="LayerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelativePointsReaderSettings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
-      <Project>{C12BE432-2309-4B08-9156-E47FAF9ACD21}</Project>
-      <Name>Interfaces</Name>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{C75D2069-9052-425C-9495-04503DB67BDA}</Project>
+      <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

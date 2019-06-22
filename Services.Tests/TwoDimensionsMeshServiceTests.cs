@@ -13,7 +13,11 @@ namespace Services.Tests
         public void CanDrawTests(double[] x, double[] y, bool expected)
         {
             // arrange
-            service = new TwoDimensionsMeshService(x, y);
+            service = new TwoDimensionsMeshService
+            {
+                Xs = x,
+                Ys = y
+            };
 
             // act
             var result = service.CanDraw();
@@ -26,20 +30,28 @@ namespace Services.Tests
         public void CalculatePositions_SquarePoints_ReturnFourPoints()
         {
             // arrange
-            service = new TwoDimensionsMeshService(new double[] { 0, 1 }, new double[] { 0, 1 });
+            service = new TwoDimensionsMeshService
+            {
+                Xs = new double[] { 0, 1 },
+                Ys = new double[] { 0, 1 }
+            };
 
             // act
             var result = service.CalculatePositions();
 
             // assert
-            Assert.AreEqual(" 0,0,0 1,0,0 0,1,0 1,1,0", result);
+            Assert.AreEqual("0,0,0 1,0,0 0,1,0 1,1,0", result);
         }
 
         [Test]
         public void CalculateTriangleIndices_SquarePoints_ReturnTwoFacesIndices()
         {
             // arrange
-            service = new TwoDimensionsMeshService(new double[] { 0, 1 }, new double[] { 0, 1 });
+            service = new TwoDimensionsMeshService
+            {
+                Xs = new double[] { 0, 1 },
+                Ys = new double[] { 0, 1 }
+            };
 
             // act
             var result = service.CalculateTriangleIndices();
@@ -52,20 +64,28 @@ namespace Services.Tests
         public void CalculatePositions_TwoSquarePoints_ReturnFourPoints()
         {
             // arrange
-            service = new TwoDimensionsMeshService(new double[] { 0, 1, 2 }, new double[] { 0, 1 });
+            service = new TwoDimensionsMeshService
+            {
+                Xs = new double[] { 0, 1, 2 },
+                Ys = new double[] { 0, 1 }
+            };
 
             // act
             var result = service.CalculatePositions();
 
             // assert
-            Assert.AreEqual(" 0,0,0 1,0,0 2,0,0 0,1,0 1,1,0 2,1,0", result);
+            Assert.AreEqual("0,0,0 1,0,0 2,0,0 0,1,0 1,1,0 2,1,0", result);
         }
 
         [Test]
         public void CalculateTriangleIndices_TwoSquarePoints_ReturnTwoFacesIndices()
         {
             // arrange
-            service = new TwoDimensionsMeshService(new double[] { 0, 1, 2 }, new double[] { 0, 1 });
+            service = new TwoDimensionsMeshService
+            {
+                Xs = new double[] { 0, 1, 2 },
+                Ys = new double[] { 0, 1 }
+            };
 
             // act
             var result = service.CalculateTriangleIndices();

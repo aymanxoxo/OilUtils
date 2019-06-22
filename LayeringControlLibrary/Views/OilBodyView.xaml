@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="LayeringControlLibrary.Views.OilBodyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LayeringControlLibrary.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Viewport3D Grid.Column="1">
+            <Viewport3D.Camera>
+                <PerspectiveCamera x:Name="Camera" Position="{Binding ElementName=PosTxt, Path=Text}" LookDirection="{Binding ElementName=LKTxt, Path=Text}" UpDirection="{Binding ElementName=UDTxt, Path=Text}" FieldOfView="{Binding ElementName=FOVTxt, Path=Text}"></PerspectiveCamera>
+            </Viewport3D.Camera>
+            <Viewport3D.Children>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <Model3DGroup x:Name="Group" Children="{Binding GeometryGroup}">
+                        </Model3DGroup>
+                    </ModelVisual3D.Content>
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D x:Name="rotatex" Axis="1,0,0" />
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D x:Name="rotatey" Axis="0,1,0" />
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D x:Name="rotatez" Axis="0,0,1" />
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+                </ModelVisual3D>
+            </Viewport3D.Children>
+        </Viewport3D>
+
+        <Grid Grid.Row="1">
+            <Expander ExpandDirection="Up" IsExpanded="True">
+                <Expander.Header>
+                    <TextBlock Style="{StaticResource H3}" Text="Settings"/>
+                </Expander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Position"></Label>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="PosTxt" Text="1000,7000,0"></TextBox>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Look Direction"></Label>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="LKTxt" Text="0,-.7,-0.35"></TextBox>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Up Direction"></Label>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="UDTxt" Text="0,0,1"></TextBox>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="Light Direction"></Label>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="LightTxt" Text="{Binding LightDirection, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="Rotate X"></Label>
+                    <Slider Grid.Row="4" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatex, Path=Angle}"></Slider>
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="Rotate Y"></Label>
+                    <Slider Grid.Row="5" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatey, Path=Angle}"></Slider>
+
+                    <Label Grid.Row="6" Grid.Column="0" Content="Rotate Z"></Label>
+                    <Slider Grid.Row="6" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatez, Path=Angle}"></Slider>
+
+                    <Label Grid.Row="7" Grid.Column="0" Content="Volume"/>
+                    <Label Grid.Row="7" Grid.Column="1" Content="{Binding Volume}"/>
+                </Grid>
+            </Expander>
+        </Grid>
+
+    </Grid>
+</UserControl>

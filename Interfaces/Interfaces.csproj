@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\OilUtils\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IContracts\IReaderSettings.cs" />
+    <Compile Include="Events\NewLayerAddedEvent.cs" />
+    <Compile Include="Events\RequestBodyDrawEvent.cs" />
     <Compile Include="IServices\ILayerReaderService.cs" />
     <Compile Include="IOperations\IMeshCalculatorOperations.cs" />
     <Compile Include="IOperations\IThreeDimensionsOperations.cs" />
@@ -50,6 +54,15 @@
     <Compile Include="IServices\ITwoDimensionsMeshService.cs" />
     <Compile Include="IOperations\ITwoDimensionsOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{0AF0A790-C0DB-4CF9-A19A-EA07643664B7}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

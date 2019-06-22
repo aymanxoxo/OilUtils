@@ -6,15 +6,30 @@
         mc:Ignorable="d"
         xmlns:region="http://prismlibrary.com/"
         xmlns:regionNames="clr-namespace:Infrastructure.StringConstants;assembly=Infrastructure"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Oil Utils" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Column 0 -->
         <ContentControl Grid.Column="0" region:RegionManager.RegionName="{x:Static regionNames:RegionNames.SettingsViewRegion}"/>
+        
+        <!-- Column 1 -->
+        <GridSplitter Grid.Column="1"/>
+        
+        <!-- Column 2 -->
+        <ContentControl Grid.Column="2" region:RegionManager.RegionName="{x:Static regionNames:RegionNames.AllLayers}"/>
+
+        <!-- Column 3 -->
+        <GridSplitter Grid.Column="3"/>
+        
+        <!-- Column 4 -->
+        <ContentControl Grid.Column="4" region:RegionManager.RegionName="{x:Static regionNames:RegionNames.OilLayer}"/>
 
     </Grid>
 </Window>

@@ -7,5 +7,7 @@
         int[] CalculateTriangleIndices();
 
         bool CanDraw();
+
+        void Reset();
     }
 }

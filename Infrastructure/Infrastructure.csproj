@@ -50,6 +50,5 @@
     <Compile Include="StringConstants\RegionNames.cs" />
     <Compile Include="StringConstants\UnityServiceNames.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

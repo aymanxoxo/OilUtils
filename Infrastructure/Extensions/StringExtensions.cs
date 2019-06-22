@@ -18,7 +18,7 @@ namespace Infrastructure.Extensions
             {
                 foreach(var key in replaceChars.Keys)
                 {
-                    self.Replace(key, replaceChars[key]);
+                    self = self.Replace(key, replaceChars[key]);
                 }
             }
 
@@ -29,7 +29,7 @@ namespace Infrastructure.Extensions
                 return new double[] { };
             }
 
-            var result = strArr.Select(s =>
+            var result = strArr.Where(s => !string.IsNullOrEmpty(s)).Select(s =>
             {
                 if (!double.TryParse(s?.Trim(), out var d))
                 {

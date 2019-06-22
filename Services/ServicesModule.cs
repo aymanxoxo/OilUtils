@@ -26,6 +26,7 @@ namespace Services
             _container.RegisterType<IThreeDimensionsMeshService, ThreeDimensionsMeshService>();
             _container.RegisterType<IReaderFactory<RelativePointsReaderSettings>, RelativePointsReaderServiceFactory>();
             _container.RegisterType<IReaderFactory<IntervalReaderSettings>, IntervalReaderServiceFactory>();
+            _container.RegisterType<IReaderFactory<FileReaderSettings>, FileReaderServiceFactory>();
         }
     }
 }
