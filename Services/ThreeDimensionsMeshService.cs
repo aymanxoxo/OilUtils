@@ -7,16 +7,17 @@ namespace Services
 {
     public class ThreeDimensionsMeshService : IThreeDimensionsMeshService
     {
-        public double[] Xs { get; set; }
-        public double[] Ys { get; set; }
-        public double[] Z1s { get; set; }
-        public double[] Z2s { get; set; }
 
         private string _positions;
 
         private List<int> _trianglesIndices;
 
         private double? _volume;
+
+        public double[] Xs { get; set; }
+        public double[] Ys { get; set; }
+        public double[] Z1s { get; set; }
+        public double[] Z2s { get; set; }
 
         public ThreeDimensionsMeshService()
         {
