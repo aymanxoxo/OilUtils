@@ -1,33 +1,23 @@
 ﻿using Interfaces.IServices;
+using Models;
 using System;
 
 namespace Services
 {
-    public class IntervalReaderService : ILayerReaderService
+    public class IntervalReaderService : ILayerReaderService<IntervalReaderSettings>
     {
-        private readonly double _interval;
-        private readonly int _pointsCount;
-        private readonly double _startPoint;
-
-        public IntervalReaderService(double interval, int pointsCount, double startPoint = 0)
+        public double[] ReadPoints(IntervalReaderSettings settings)
         {
-            _interval = interval;
-            _pointsCount = pointsCount;
-            _startPoint = startPoint;
-        }
-
-        public double[] ReadPoints()
-        {
-            if (_pointsCount <= 0)
+            if (settings.PointsCount <= 0)
             {
                 throw new ArgumentException("Points count must be greater than zero");
             }
 
-            var result = new double[_pointsCount];
+            var result = new double[settings.PointsCount];
 
-            for(var i = 0; i < _pointsCount; i++)
+            for(var i = 0; i < settings.PointsCount; i++)
             {
-                result[i] = _startPoint + (i * _interval);
+                result[i] = settings.StartPoint + (i * settings.Interval);
             }
 
             return result;

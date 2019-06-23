@@ -2,6 +2,7 @@
 using Infrastructure.Command;
 using Interfaces.Events;
 using Interfaces.IFactories;
+using Interfaces.IServices;
 using Models;
 using Prism.Events;
 using System;
@@ -15,13 +16,15 @@ namespace LayeringControlLibrary.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
-        private readonly IUnityContainer _container;
         private readonly NewLayerAddedEvent _layerAddedEvent;
         private readonly RequestBodyDrawEvent _requestBodyDrawEvent;
+        private readonly ILayerReaderService<IntervalReaderSettings> _intervalReaderService;
+        private readonly ILayerReaderService<FileReaderSettings> _fileReaderService;
 
         public SettingsViewModel(IUnityContainer container, IEventAggregator eventAggregator)
         {
-            _container = container;
+            _intervalReaderService = container.Resolve<ILayerReaderService<IntervalReaderSettings>>();
+            _fileReaderService = container.Resolve<ILayerReaderService<FileReaderSettings>>();
             _layerAddedEvent = eventAggregator.GetEvent<NewLayerAddedEvent>();
             _requestBodyDrawEvent = eventAggregator.GetEvent<RequestBodyDrawEvent>();
             RunDemo();
@@ -93,9 +96,9 @@ namespace LayeringControlLibrary.ViewModels
             {
                 Name = "Top Horizon",
                 Color = new SolidColorBrush(Color.FromArgb(180, 33, 175, 17)),
-                X = _container.Resolve<IReaderFactory<IntervalReaderSettings>>().GetReaderService(topHorizonX).ReadPoints(),
-                Y = _container.Resolve<IReaderFactory<IntervalReaderSettings>>().GetReaderService(topHorizonY).ReadPoints(),
-                Z = _container.Resolve<IReaderFactory<FileReaderSettings>>().GetReaderService(topHorizonZ).ReadPoints().Select(p =>
+                X = _intervalReaderService.ReadPoints(topHorizonX),
+                Y = _intervalReaderService.ReadPoints(topHorizonY),
+                Z = _fileReaderService.ReadPoints(topHorizonZ).Select(p =>
                 {
                     return p * -0.3048; // TODO convert from feet to meter and TODO convert from abs value to depth
                 }).ToArray()
@@ -120,12 +123,12 @@ namespace LayeringControlLibrary.ViewModels
                 Color = new SolidColorBrush(Color.FromRgb(148, 192, 230)),
                 X = topHorizon.X,
                 Y = topHorizon.Y,
-                Z = _container.Resolve<IReaderFactory<IntervalReaderSettings>>().GetReaderService(new IntervalReaderSettings
+                Z = _intervalReaderService.ReadPoints(new IntervalReaderSettings
                 {
                     Interval = 0,
                     PointsCount = topHorizon.Z.Length,
                     StartPoint = -3000
-                }).ReadPoints()
+                })
             };
             AddLayer(fluidBody, LowerLayers, nameof(LowerLayers));
         }

@@ -49,7 +49,6 @@
     <Compile Include="IServices\ILayerReaderService.cs" />
     <Compile Include="IOperations\IMeshCalculatorOperations.cs" />
     <Compile Include="IOperations\IThreeDimensionsOperations.cs" />
-    <Compile Include="IFactories\IReaderFactory.cs" />
     <Compile Include="IServices\IThreeDimensionsMeshService.cs" />
     <Compile Include="IServices\ITwoDimensionsMeshService.cs" />
     <Compile Include="IOperations\ITwoDimensionsOperations.cs" />

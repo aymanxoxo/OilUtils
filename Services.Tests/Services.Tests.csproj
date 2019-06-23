@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{0AF0A790-C0DB-4CF9-A19A-EA07643664B7}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{ab6891fe-57cc-4680-b3fb-b4d43607d679}</Project>
       <Name>Services</Name>

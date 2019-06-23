@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Models;
+using NUnit.Framework;
 using System;
 
 namespace Services.Tests
@@ -13,10 +14,14 @@ namespace Services.Tests
         {
             // arrange
             var dependentPoints = new double[] { 1, 2, 3, 4 };
-            service = new RelativePointsReaderService(dependentPoints, "4, 3, 2, 1");
+            service = new RelativePointsReaderService();
 
             // act
-            var result = service.ReadPoints();
+            var result = service.ReadPoints(new RelativePointsReaderSettings
+            {
+                DependentPoints = dependentPoints,
+                DiffValues = "4, 3, 2, 1"
+            });
 
             // assert
             Assert.AreEqual(dependentPoints.Length, result.Length);
@@ -31,10 +36,14 @@ namespace Services.Tests
         {
             // arrange
             var dependentPoints = new double[] { 1, 2, 3, 4 };
-            service = new RelativePointsReaderService(dependentPoints, "-1, -2, -3, -4");
+            service = new RelativePointsReaderService();
 
             // act
-            var result = service.ReadPoints();
+            var result = service.ReadPoints(new RelativePointsReaderSettings
+            {
+                DependentPoints = dependentPoints,
+                DiffValues = "-1, -2, -3, -4"
+            });
 
             // assert
             Assert.AreEqual(dependentPoints.Length, result.Length);
@@ -53,12 +62,16 @@ namespace Services.Tests
         {
             // arrange
             Exception exception = null;
-            service = new RelativePointsReaderService(dependentPoints, diffPoints);
+            service = new RelativePointsReaderService();
 
             // act
             try
             {
-                service.ReadPoints();
+                service.ReadPoints(new RelativePointsReaderSettings
+                {
+                    DependentPoints = dependentPoints,
+                    DiffValues = diffPoints
+                });
             }
             catch(Exception ex)
             {

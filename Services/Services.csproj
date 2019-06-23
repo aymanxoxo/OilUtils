@@ -66,9 +66,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\FileReaderServiceFactory.cs" />
-    <Compile Include="Factories\IntervalReaderServiceFactory.cs" />
-    <Compile Include="Factories\RelativePointsReaderServiceFactory.cs" />
     <Compile Include="FileReaderService.cs" />
     <Compile Include="IntervalReaderService.cs" />
     <Compile Include="ServicesModule.cs" />

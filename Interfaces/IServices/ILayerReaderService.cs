@@ -1,7 +1,9 @@
-﻿namespace Interfaces.IServices
+﻿using Models.IContracts;
+
+namespace Interfaces.IServices
 {
-    public interface ILayerReaderService
+    public interface ILayerReaderService<T> where T : IReaderSettings
     {
-        double[] ReadPoints();
+        double[] ReadPoints(T settings);
     }
 }

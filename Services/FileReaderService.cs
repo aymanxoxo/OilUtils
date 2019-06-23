@@ -1,28 +1,22 @@
 ﻿using Infrastructure.Extensions;
 using Interfaces.IServices;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Services
 {
-    public class FileReaderService : ILayerReaderService
+    public class FileReaderService : ILayerReaderService<FileReaderSettings>
     {
-        private readonly string _filePath;
-
-        public FileReaderService(string filePath)
+        public double[] ReadPoints(FileReaderSettings settings)
         {
-            _filePath = filePath;
-        }
-
-        public double[] ReadPoints()
-        {
-            if (!File.Exists(_filePath))
+            if (string.IsNullOrEmpty(settings.FilePath) || !File.Exists(settings.FilePath))
             {
                 throw new ArgumentException();
             }
 
-            var depthsStr = File.ReadAllText(_filePath);
+            var depthsStr = File.ReadAllText(settings.FilePath);
 
             var charsToReplace = new Dictionary<string, string>();
             charsToReplace.Add("\r\n", " ");

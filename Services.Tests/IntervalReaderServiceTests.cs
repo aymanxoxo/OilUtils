@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Models;
+using NUnit.Framework;
 using System;
 
 namespace Services.Tests
@@ -14,10 +15,15 @@ namespace Services.Tests
             // arrange
             int pointsCount = 5;
             double startPoint = 0;
-            service = new IntervalReaderService(0, pointsCount, startPoint);
+            service = new IntervalReaderService();
 
             // act
-            var result = service.ReadPoints();
+            var result = service.ReadPoints(new IntervalReaderSettings
+            {
+                Interval = 0,
+                PointsCount = pointsCount,
+                StartPoint = startPoint
+            });
 
             // assert
             Assert.AreEqual(result.Length, pointsCount);
@@ -39,10 +45,15 @@ namespace Services.Tests
         public void ReadPoints_PositiveInterval(double interval, int pointsCount, double startPoint)
         {
             // arrange
-            service = new IntervalReaderService(interval, pointsCount, startPoint);
+            service = new IntervalReaderService();
 
             // act
-            var result = service.ReadPoints();
+            var result = service.ReadPoints(new IntervalReaderSettings
+            {
+                Interval = interval,
+                PointsCount = pointsCount,
+                StartPoint = startPoint
+            });
 
             // assert
             Assert.AreEqual(result.Length, pointsCount);
@@ -57,12 +68,17 @@ namespace Services.Tests
         {
             // arrange
             Exception exception = null;
-            service = new IntervalReaderService(interval, pointsCount, startPoint);
+            service = new IntervalReaderService();
 
             // act
             try
             {
-                service.ReadPoints();
+                service.ReadPoints(new IntervalReaderSettings
+                {
+                    Interval = interval,
+                    PointsCount = pointsCount,
+                    StartPoint = startPoint
+                });
             }
             catch(Exception ex)
             {
