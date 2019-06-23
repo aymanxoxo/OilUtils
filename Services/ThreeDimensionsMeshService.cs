@@ -158,6 +158,7 @@ namespace Services
                 return _volume.Value;
             }
 
+            // https://stackoverflow.com/questions/16460897/calculate-the-volume-of-a-geometrymodel3d
             _volume = 0;
             var triangles = CalculateTriangleIndices();
             var positionsArray = CalculatePositions().Split(' ');
@@ -168,10 +169,10 @@ namespace Services
                 var v2 = positionsArray[triangles[i + 1]].ExtractDoubles();
                 var v3 = positionsArray[triangles[i + 2]].ExtractDoubles();
 
-                _volume += (((v2[1] - v1[1]) * (v3[2] - v1[2]) - (v2[2] - v1[2]) * (v3[1] - v1[1])) * (v1[0] + v2[0] + v3[0])) / 6;
+                _volume += Math.Abs((((v2[1] - v1[1]) * (v3[2] - v1[2]) - (v2[2] - v1[2]) * (v3[1] - v1[1])) * (v1[0] + v2[0] + v3[0])) / 6);
             }
 
-            return Math.Abs(_volume.Value);
+            return _volume.Value;
         }
     }
 }

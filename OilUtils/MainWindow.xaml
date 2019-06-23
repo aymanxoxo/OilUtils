@@ -9,7 +9,7 @@
         Title="Oil Utils" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="auto"/>
