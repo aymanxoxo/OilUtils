@@ -7,6 +7,7 @@ using Models.Enums;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -94,7 +95,7 @@ namespace LayeringControlLibrary.ViewModels
             };
             var topHorizonZ = new FileReaderSettings
             {
-                FilePath = AppDomain.CurrentDomain.BaseDirectory + "Content/TopHorizonDepths.txt"
+                FilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings.Get("demoDepthsFile")
             };
 
             var topHorizon = new LayerModel
