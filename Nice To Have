@@ -1,0 +1,4 @@
+1- Custom exceptions and exception handling.
+2- Settings view could be extended to allow user to upload whatever layers he needs and calculate the oil body based on the user's input.
+3- MeshServices could be refactored with a better algorith so that it can produce a better Mesh objects, for example ignore points with zero depth. But i only focused on calculating the required volume.
+4- Value converters could be moved to a separate project to be used with any UI project later.
