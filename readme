@@ -1,0 +1,5 @@
+1- Restore nuget packages.
+2- Build the solution.
+3- Make sure that binaries for Services.proj and LayeringControlLibrary.proj are generated at the main project (OilUtils.proj) bin folder.
+4- Make sure that the depths points text file which lives in OilUtils/Content folder is copied to the binaries, You can also change the 'relative' path in app.config file.
+5- Anything about the harded coded data need to run the example can be found in RunDemo method at LayeringControlLibrary/ViewModels/SettingsViewModel
