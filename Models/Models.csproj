@@ -42,7 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DisplayAttribute.cs" />
+    <Compile Include="Attributes\UnitFactorAttribute.cs" />
     <Compile Include="BodyModel.cs" />
+    <Compile Include="Enums\LengthUnits.cs" />
+    <Compile Include="Enums\VolumeUnits.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="FileReaderSettings.cs" />
     <Compile Include="IContracts\IReaderSettings.cs" />
     <Compile Include="IntervalReaderSettings.cs" />

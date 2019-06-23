@@ -1,9 +1,9 @@
 ﻿using Infrastructure;
 using Infrastructure.Command;
 using Interfaces.Events;
-using Interfaces.IFactories;
 using Interfaces.IServices;
 using Models;
+using Models.Enums;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
@@ -20,11 +20,16 @@ namespace LayeringControlLibrary.ViewModels
         private readonly RequestBodyDrawEvent _requestBodyDrawEvent;
         private readonly ILayerReaderService<IntervalReaderSettings> _intervalReaderService;
         private readonly ILayerReaderService<FileReaderSettings> _fileReaderService;
+        private readonly IUnitConverter _converterService;
 
-        public SettingsViewModel(IUnityContainer container, IEventAggregator eventAggregator)
+        public SettingsViewModel(IEventAggregator eventAggregator,
+            ILayerReaderService<IntervalReaderSettings> intervalReaderService,
+            ILayerReaderService<FileReaderSettings> fileReaderService,
+            IUnitConverter converterService)
         {
-            _intervalReaderService = container.Resolve<ILayerReaderService<IntervalReaderSettings>>();
-            _fileReaderService = container.Resolve<ILayerReaderService<FileReaderSettings>>();
+            _intervalReaderService = intervalReaderService;
+            _fileReaderService = fileReaderService;
+            _converterService = converterService;
             _layerAddedEvent = eventAggregator.GetEvent<NewLayerAddedEvent>();
             _requestBodyDrawEvent = eventAggregator.GetEvent<RequestBodyDrawEvent>();
             RunDemo();
@@ -77,13 +82,13 @@ namespace LayeringControlLibrary.ViewModels
             // Add Top Horizon
             var topHorizonX = new IntervalReaderSettings
             {
-                Interval = 200 * 0.3048, // TODO convert from feet to meter
+                Interval = _converterService.Convert(200, LengthUnits.Foot, LengthUnits.Meter),
                 PointsCount = 16,
                 StartPoint = 0
             };
             var topHorizonY = new IntervalReaderSettings
             {
-                Interval = 200 * 0.3048, // TODO convert from feet to meter
+                Interval = _converterService.Convert(200, LengthUnits.Foot, LengthUnits.Meter),
                 PointsCount = 26,
                 StartPoint = 0
             };
@@ -100,7 +105,7 @@ namespace LayeringControlLibrary.ViewModels
                 Y = _intervalReaderService.ReadPoints(topHorizonY),
                 Z = _fileReaderService.ReadPoints(topHorizonZ).Select(p =>
                 {
-                    return p * -0.3048; // TODO convert from feet to meter and TODO convert from abs value to depth
+                    return _converterService.Convert(p * -1, LengthUnits.Foot, LengthUnits.Meter);
                 }).ToArray()
             };
             AddLayer(topHorizon, UpperLayers, nameof(UpperLayers));

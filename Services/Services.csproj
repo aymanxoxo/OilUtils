@@ -73,6 +73,7 @@
     <Compile Include="RelativePointsReaderService.cs" />
     <Compile Include="ThreeDimensionsMeshService.cs" />
     <Compile Include="TwoDimensionsMeshService.cs" />
+    <Compile Include="UnitConverterService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">

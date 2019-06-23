@@ -86,6 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ValueConverter\VolumeUnitsValueConverter.cs" />
     <Compile Include="ViewModels\AllLayersViewModel.cs" />
     <Compile Include="ViewModels\OilBodyViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />

@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LayeringControlLibrary.Views"
+             xmlns:converters="clr-namespace:LayeringControlLibrary.ValueConverter"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:VolumeUnitsValueConverter x:Key="volumeConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -58,7 +62,6 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -72,21 +75,29 @@
 
                     <Label Grid.Row="2" Grid.Column="0" Content="Up Direction"></Label>
                     <TextBox Grid.Row="2" Grid.Column="1" x:Name="UDTxt" Text="0,0,1"></TextBox>
+                    
+                    <Label Grid.Row="3" Grid.Column="0" Content="Rotate X"></Label>
+                    <Slider Grid.Row="3" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatex, Path=Angle}"></Slider>
 
-                    <Label Grid.Row="3" Grid.Column="0" Content="Light Direction"></Label>
-                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="LightTxt" Text="{Binding LightDirection, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <Label Grid.Row="4" Grid.Column="0" Content="Rotate Y"></Label>
+                    <Slider Grid.Row="4" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatey, Path=Angle}"></Slider>
 
-                    <Label Grid.Row="4" Grid.Column="0" Content="Rotate X"></Label>
-                    <Slider Grid.Row="4" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatex, Path=Angle}"></Slider>
+                    <Label Grid.Row="5" Grid.Column="0" Content="Rotate Z"></Label>
+                    <Slider Grid.Row="5" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatez, Path=Angle}"></Slider>
 
-                    <Label Grid.Row="5" Grid.Column="0" Content="Rotate Y"></Label>
-                    <Slider Grid.Row="5" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatey, Path=Angle}"></Slider>
-
-                    <Label Grid.Row="6" Grid.Column="0" Content="Rotate Z"></Label>
-                    <Slider Grid.Row="6" Grid.Column="1" Minimum="-180" Maximum="180" Value="{Binding ElementName=rotatez, Path=Angle}"></Slider>
-
-                    <Label Grid.Row="7" Grid.Column="0" Content="Volume"/>
-                    <Label Grid.Row="7" Grid.Column="1" Content="{Binding Volume}"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="Volume"/>
+                    <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
+                        <!--Content="{Binding Volume, Converter={StaticResource volumeConverter}, ConverterParameter={}}"-->
+                        <Label Grid.Row="0" Grid.Column="0">
+                            <Label.Content>
+                                <MultiBinding Converter="{StaticResource volumeConverter}">
+                                    <Binding Path="Volume"/>
+                                    <Binding Path="SelectedUnit"/>
+                                </MultiBinding>
+                            </Label.Content>
+                        </Label>
+                        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding UnitsList}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding SelectedUnit}"/>
+                    </StackPanel>
                 </Grid>
             </Expander>
         </Grid>

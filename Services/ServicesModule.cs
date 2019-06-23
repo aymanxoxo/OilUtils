@@ -2,6 +2,7 @@
 using Models;
 using Prism.Ioc;
 using Unity;
+using Unity.Lifetime;
 
 namespace Services
 {
@@ -25,6 +26,7 @@ namespace Services
             _container.RegisterType<ILayerReaderService<RelativePointsReaderSettings>, RelativePointsReaderService>();
             _container.RegisterType<ILayerReaderService<IntervalReaderSettings>, IntervalReaderService>();
             _container.RegisterType<ILayerReaderService<FileReaderSettings>, FileReaderService>();
+            _container.RegisterType<IUnitConverter, UnitConverterService>(new ContainerControlledLifetimeManager());
         }
     }
 }

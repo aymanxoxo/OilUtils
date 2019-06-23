@@ -3,8 +3,10 @@ using Infrastructure.Extensions;
 using Interfaces.Events;
 using Interfaces.IServices;
 using Models;
+using Models.Enums;
 using Prism.Events;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
@@ -14,35 +16,6 @@ namespace LayeringControlLibrary.ViewModels
     public class OilBodyViewModel : BaseViewModel
     {
         private readonly IThreeDimensionsMeshService _meshService;
-        private DirectionalLight _light = new DirectionalLight { Direction = new Vector3D(-1, -1, -1)};
-
-        private string _lightDirection = "-1, -1, -1";
-        public string LightDirection
-        {
-            get
-            {
-                return _lightDirection;
-            }
-            set
-            {
-                _lightDirection = value;
-
-                try
-                {
-                    var directionArr = _lightDirection.ExtractDoubles();
-                    if (directionArr.Length == 3)
-                    {
-                        _light.Direction = new Vector3D(directionArr[0], directionArr[1], directionArr[2]);
-                    }
-                }
-                catch (Exception)
-                {
-                }
-
-                OnPropertyChanged(nameof(LightDirection));
-                OnPropertyChanged(nameof(GeometryGroup));
-            }
-        }
 
         private Model3DCollection _geometryGroup = new Model3DCollection();
         public Model3DCollection GeometryGroup
@@ -72,12 +45,50 @@ namespace LayeringControlLibrary.ViewModels
             }
         }
 
+        private VolumeUnits _selectedUnit = VolumeUnits.CubicMeter;
+        public VolumeUnits SelectedUnit
+        {
+            get
+            {
+                return _selectedUnit;
+            }
+            set
+            {
+                _selectedUnit = value;
+                OnPropertyChanged(nameof(SelectedUnit));
+            }
+        }
+
+        private Dictionary<VolumeUnits, string> _unitsList = new Dictionary<VolumeUnits, string>();
+        public Dictionary<VolumeUnits, string> UnitsList
+        {
+            get
+            {
+                return _unitsList;
+            }
+            set
+            {
+                _unitsList = value;
+                OnPropertyChanged(nameof(UnitsList));
+            }
+        }
+
         public OilBodyViewModel(IThreeDimensionsMeshService meshService, IEventAggregator eventAggregator)
         {
-            GeometryGroup.Add(_light);
-
+            // inject services
             _meshService = meshService;
             eventAggregator.GetEvent<RequestBodyDrawEvent>().Subscribe(DrawBody);
+
+            // add light to the geometry
+            GeometryGroup.Add(new DirectionalLight { Direction = new Vector3D(-1, -1, -1) });
+            GeometryGroup.Add(new DirectionalLight { Direction = new Vector3D(-1, -1, 1) });
+
+            // initialize converters list
+            foreach(var unitValue in Enum.GetValues(typeof(VolumeUnits)))
+            {
+                var unit = (VolumeUnits)unitValue;
+                UnitsList.Add(unit, unit.ToString());
+            }
         }
 
         private void DrawBody(BodyModel model)

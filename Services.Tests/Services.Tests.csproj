@@ -52,6 +52,7 @@
     <Compile Include="RelativePointsReaderServiceTests.cs" />
     <Compile Include="ThreeDimensionsMeshServiceTests.cs" />
     <Compile Include="TwoDimensionsMeshServiceTests.cs" />
+    <Compile Include="UnitConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
