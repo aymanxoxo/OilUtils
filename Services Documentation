@@ -1,0 +1,17 @@
+* ILayerReaderSettings
+    Expects different types of input that implements IReaderSettings and via *Read Points* method returns and array of points.
+    
+* IMeshCalculatorOperations
+   Calculates Positions, Triangle Indices required to draw Mesh3d Object
+   
+   - coupled with ITwoDimensionsOperations returns 2d plain Mesh object
+   - couple with IThreeDimensionsOperations returns 3d Mesh object
+   
+* ITwoDimensionsOperations
+    Contains members needed to draw any two dimensions plain (x, y, z)
+
+* IThreeDimensionsOperations
+    Besides containing members to draw 3d object (x, y, z1, z2), it contains an operation to calculate the volume of the object.
+    
+* IUnitConverter
+     Contains only one operation to convert a value from enum member that has UnitFactor Attribute to a member from the same enum.
