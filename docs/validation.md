@@ -23,4 +23,4 @@ Because the project targets .NET Framework 4.5, validation must run in a compati
 
 ## Verification status
 
-This repository does not include a recorded CI result. The procedure above documents how to build and exercise the existing test suite; it does not claim a current passing build.
+Automated CI is not configured. Build and test status must therefore be established in a compatible Windows environment using the procedure above.

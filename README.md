@@ -1,12 +1,10 @@
 # OilUtils
 
-OilUtils is a legacy WPF application that models layered subsurface volumes from depth-point data. It is preserved as an engineering case study: the project demonstrates modular desktop composition, geometry calculation, and automated verification, while remaining candid about its age and limitations.
-
-> This repository intentionally leaves the application code unchanged. The documentation added around it explains the existing design; it does not present OilUtils as a current production-ready system.
+OilUtils is a WPF application for modeling layered subsurface volumes from depth-point data. It reads surface points, constructs two-dimensional and three-dimensional meshes, renders them through a Prism-based desktop interface, and calculates enclosed volume.
 
 ![Existing class diagram](Class%20Diagram.PNG)
 
-## What the project demonstrates
+## Capabilities and structure
 
 - A modular WPF application composed with Prism and Unity.
 - Explicit service and operation contracts for reading points, building meshes, and converting units.
@@ -20,10 +18,10 @@ The most interesting implementation is `Services/ThreeDimensionsMeshService.cs`:
 
 - [Architecture](docs/architecture.md) explains the modules, contracts, and data flow.
 - [Validation notes](docs/validation.md) identify the existing automated tests and the baseline-verification process.
-- [Legacy notes](docs/legacy.md) records the runtime, build constraints, and design trade-offs that should be understood before using the code.
+- [Platform and maintenance notes](docs/legacy.md) records the runtime, build constraints, and design trade-offs that should be understood before using the code.
 - [`readme`](readme) and [`Services Documentation`](Services%20Documentation) are the original run notes and contract descriptions retained for historical context.
 
-## Running the legacy application
+## Running the application
 
 OilUtils targets .NET Framework 4.5 and was authored for Visual Studio 2019-era tooling. A compatible Windows environment requires:
 
@@ -36,6 +34,4 @@ The sample input file is `OilUtils/Content/TopHorizonDepths.txt`. The original r
 
 ## Scope and limitations
 
-This is not a modern .NET service or an actively maintained product. It uses .NET Framework, WPF, Prism, Unity, and `packages.config`; it has no current CI pipeline or cross-platform support. The service implementations are stateful and some boundaries would be redesigned today for safer validation, clearer ownership, and more efficient data handling.
-
-Those constraints are part of the case study, not details to conceal. The repository is useful because the domain problem, modularization, and tested geometry behavior remain visible and explainable.
+The project targets .NET Framework 4.5 and depends on WPF, Prism, Unity, and the legacy NuGet `packages.config` layout. It has no current CI pipeline or cross-platform runtime path. Mesh-service instances retain calculated positions, triangle indices, and volume until `Reset()` is called, so callers must manage each service instance and input lifecycle accordingly.

@@ -52,6 +52,4 @@ The tests use cube-shaped inputs to validate the core invariants: valid surface 
 - Interfaces separate rendering-oriented contracts from calculation and input concerns.
 - Prism modules allow the host to compose services and views at runtime.
 - Stateful mesh services cache calculations, reducing repeat work but making object lifecycle and input mutation important.
-- Mesh positions are represented as formatted strings for the UI path; a modern design would likely retain a typed vertex representation until the rendering boundary.
-
-These are observations of the existing implementation, not claims that this is the preferred design for new systems.
+- Mesh positions are represented as formatted strings for the UI path rather than as typed vertex values at the rendering boundary.
