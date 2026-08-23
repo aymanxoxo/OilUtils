@@ -21,8 +21,6 @@ Because the project targets .NET Framework 4.5, validation must run in a compati
 3. Run the `Services.Tests` NUnit suite from Visual Studio Test Explorer or a compatible NUnit runner.
 4. Start the WPF host with the sample depth file to manually confirm module discovery and rendering.
 
-## Current baseline result
+## Verification status
 
-On 2026-08-22, a Release build was attempted from this repository with the locally installed .NET SDK. It did not reach compilation because the workstation does not have the .NET Framework 4.5 Developer Pack/reference assemblies required by every project in the solution (`MSB3644`). No source change was made as a workaround.
-
-The next verification step is to install a compatible .NET Framework targeting pack, restore packages if needed, then repeat the solution build and run the NUnit suite. Until that environment is available, this document describes the test intent and verification procedure rather than asserting a passing build.
+This repository does not include a recorded CI result. The procedure above documents how to build and exercise the existing test suite; it does not claim a current passing build.
