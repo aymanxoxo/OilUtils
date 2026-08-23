@@ -1,6 +1,4 @@
-# Legacy notes
-
-OilUtils is intentionally documented, not rewritten.
+# Platform and maintenance notes
 
 ## Runtime and tooling
 
@@ -18,12 +16,10 @@ The solution records Visual Studio 2019 metadata, but a compatible .NET Framewor
 - The sample depth input is a local file and can be changed through the `demoDepthsFile` setting.
 - There is no CI workflow, container setup, web API, or cross-platform runtime path.
 
-## What a modern redesign would revisit
+## Modernization considerations
 
 - Use supported .NET and package-management tooling.
 - Model vertices and meshes with typed structures rather than UI-oriented formatted strings.
 - Make mesh calculations stateless or explicitly immutable per request.
 - Strengthen null/shape validation at service boundaries.
 - Add a reproducible build, automated test execution, and dependency scanning.
-
-None of those changes are included in this documentation pass. Keeping the original code intact makes the distinction between the historical implementation and current engineering judgment clear.
